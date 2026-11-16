@@ -1,0 +1,6 @@
+[submodule "deps/Streamline"]
+	path = deps/Streamline
+	url = https://github.com/NVIDIA-RTX/Streamline
+[submodule "deps/Detours"]
+	path = deps/Detours
+	url = https://github.com/microsoft/Detours

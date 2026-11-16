@@ -1,0 +1,28 @@
+# build output
+src/obj/
+src/*.dll
+src/*.lib
+src/*.exp
+tools/*.exe
+tools/*.obj
+tools/*.log
+tests/obj/
+tests/*.exe
+tests/*.pdb
+tests/*.ilk
+tests/*.exp
+tests/*.lib
+tests/last_run.txt
+# local material: reverse-engineering notes, reference checkouts, captures, NVIDIA binaries
+/attic/
+/re/
+/ref/
+/shots/
+/deploy/
+/detours/
+build_local.bat
+test_local.bat
+*.png
+*.py
+/build/
+/_archive/
