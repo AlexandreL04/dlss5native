@@ -174,7 +174,7 @@ missing inputs) and what the model is handed. `tools\build.bat` compiles every s
 
 ## How it was verified
 
-Three games, each using DLSS in a different way, with the same two files and nothing configured
+Five games, each using DLSS in a different way, with the same two files and nothing configured
 (RTX 4090, 2560x1440):
 
 | game | how it uses DLSS | what happened |
@@ -182,6 +182,8 @@ Three games, each using DLSS in a different way, with the same two files and not
 | Marvel's Spider-Man 2 | through Streamline (its own 2.7.2 files, untouched), DLSS Ray Reconstruction | DLSS 5 added: model created at 2560x1440, every evaluate succeeds; panel drawn at present |
 | Bodycam (Unreal Engine 5) | calls NGX itself through NVIDIA's DLSS plugin, Streamline only for frame generation | DLSS 5 added: model created at 2560x1440, every evaluate succeeds; panel drawn at present, over the game's camera filter |
 | NBA 2K27 | has DLSS 5 of its own | option on: the game's own DLSS 5 runs on this GPU (2000 evaluates counted, none failed) and nothing is added; option off: the game does not create it, and DLSS 5 is added as in the other two |
+| Avatar: Frontiers of Pandora (Snowdrop) | through Streamline, DLSS Ray Reconstruction, DLSS frame generation on | DLSS 5 added: model created at 2560x1440, 3000 evaluates counted, none failed; panel drawn at present |
+| Bloodborne (PC port [bloodborne_pc](https://github.com/Supermedo/bloodborne_pc), Vulkan) | the port's DLSS runs on a D3D12 device of its own, added in [pull request #175](https://github.com/Supermedo/bloodborne_pc/pull/175) | DLSS 5 added on that D3D12 device: 74-88 fps with DLSS 5 against 119 without (120 cap) |
 
 Cost on a fixed scene of Marvel's Spider-Man 2, frame generation x2, against the RenoDX add-on in the same session
 conditions (rendered frames per second, DLSS 5 on / off alternated four times):
@@ -197,7 +199,7 @@ Not verified yet:
 
 ## Limits
 
-- DirectX 12 and DLSS only. No DirectX 11, no Vulkan, no game without DLSS (FSR or XeSS alone give no
+- DirectX 12 and DLSS only. No DirectX 11, no Vulkan (unless the game runs its DLSS on a D3D12 device, as the Bloodborne port above does), no game without DLSS (FSR or XeSS alone give no
   depth and motion vectors to read).
 - The parameters of the model are not in NVIDIA's public headers; they were recorded from NVIDIA's own
   plugin and may change with a future model.
